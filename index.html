@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>質序衣研 ORDINAL WEAR | 極簡膠囊日常服飾選品</title>
+  <style>
+    :root {
+      --bg-primary: #fcfbf9;
+      --bg-secondary: #f4f2ee;
+      --text-main: #2b2b2b;
+      --text-muted: #6e6b66;
+      --accent-color: #4a5568;
+      --accent-hover: #2d3748;
+      --card-bg: #ffffff;
+      --border-color: #e5e2dc;
+      --tag-bg: #eae6df;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-left: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .hero {
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      background: linear-gradient(180deg, #f7f5f0 0%, var(--bg-primary) 100%);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      color: var(--text-muted);
+      font-size: 1.15rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: var(--text-main);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background-color: #000;
+      transform: translateY(-1px);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+    }
+
+    /* Grid cards */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.8rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      background-color: var(--tag-bg);
+      color: var(--text-muted);
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .product-price {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+
+    .product-spec {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+      padding-top: 0.75rem;
+    }
+
+    .product-spec li {
+      margin-bottom: 0.35rem;
+    }
+
+    /* Academic Summary Block */
+    .theory-box {
+      background-color: var(--bg-secondary);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 3.5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .theory-box h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    .theory-item {
+      margin-bottom: 1.25rem;
+    }
+
+    .theory-item strong {
+      display: inline-block;
+      min-width: 140px;
+      color: var(--text-main);
+    }
+
+    /* Preorder CTA section */
+    .cta-banner {
+      background-color: var(--card-bg);
+      border: 2px dashed var(--border-color);
+      border-radius: 12px;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .cta-banner h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .cta-banner p {
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 0 auto 1.8rem;
+    }
+
+    footer {
+      background-color: var(--card-bg);
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部導覽列 -->
+  <header>
+    <div class="nav-container">
+      <div>
+        <a href="#" class="brand-logo">ORDINAL WEAR</a>
+        <span class="brand-subtitle">質序衣研</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">品牌初衷</a>
+        <a href="#analysis">企劃分析</a>
+        <a href="#products">膠囊選品</a>
+        <a href="#preorder">期中預購</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero 英雄主視覺 -->
+  <section class="hero">
+    <h1>以減法設計，重整衣櫃日常秩序</h1>
+    <p>擺脫快時尚的易皺變形與晨間選衣障礙。我們專注於極簡耐穿、抗皺挺拔的中性膠囊基礎服飾，一件搞定日常與休閒。</p>
+    <a href="#products" class="btn-primary">探索膠囊選品</a>
+  </section>
+
+  <!-- 內容容器 -->
+  <div class="container">
+
+    <!-- 步驟 1 痛點與動機 -->
+    <section id="about">
+      <h2 class="section-title">為什麼創立《質序衣研》？</h2>
+      <p class="section-desc">從微型創業的視角出發，聚焦現代青年三大人格著裝痛點</p>
+      
+      <div class="grid-3">
+        <div class="card">
+          <span class="card-badge">痛點 01</span>
+          <h3>快時尚廉價且易變形</h3>
+          <p>廉價化纖材質洗幾次便荷葉邊縮水，消費者陷入頻繁汰換的惡性循環，渴望穿著三年依然挺拔的高質感基本款。</p>
+        </div>
+        <div class="card">
+          <span class="card-badge">痛點 02</span>
+          <h3>創業斷碼庫存致命傷</h3>
+          <p>多尺碼多色會吃掉 3~5 萬的微型微創資金。我們採「男女共穿單一微寬鬆版型」，收斂 SKU，大幅降低存貨風險。</p>
+        </div>
+        <div class="card">
+          <span class="card-badge">痛點 03</span>
+          <h3>晨間選衣內耗焦慮</h3>
+          <p>衣櫃堆滿衣服卻不知穿什麼。我們提供「一週膠囊穿搭方案」，3 件單品即可自由組出 7 種風格，找回晨間從容。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第二部分 學理分析摘要（期中階段 1~2） -->
+    <section id="analysis">
+      <div class="theory-box">
+        <h3>行銷學理分析與期中進度盤點</h3>
+        <div class="theory-item">
+          <strong>PESTC 趨勢總結：</strong>
+          <span>青年族群崇尚 Clean Fit 與膠囊生活美學；60 元常溫超商取貨具備最高轉換率。</span>
+        </div>
+        <div class="theory-item">
+          <strong>假想敵防護策略：</strong>
+          <span>不與百元劣質快時尚打價格戰，堅守「260g 雙股重磅純棉 + 三針領口防變形」品質護城河。</span>
+        </div>
+        <div class="theory-item">
+          <strong>SWOT 因果推論：</strong>
+          <span>SO（發揮零店租敏捷優勢與穿搭短影音）；WO（以小批量現貨加預購化解初期產能受限）。</span>
+        </div>
+        <div class="theory-item">
+          <strong>SMART 期中目標：</strong>
+          <span>30 天內透過 GitHub Pages 累積 300 次瀏覽，並驗證收集 30 筆真實膠囊套裝預購意向。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 步驟 6 商品 4P 展示櫥窗 -->
+    <section id="products">
+      <h2 class="section-title">經典日常膠囊選品</h2>
+      <p class="section-desc">精選 3 款基礎百搭單品，四季皆宜的日常著裝解答</p>
+
+      <div class="grid-3">
+        <!-- 商品 1 -->
+        <div class="card">
+          <span class="card-badge">核心明星單品</span>
+          <h3>【空氣感】雙股重磅微寬落肩 T</h3>
+          <p>260g 精梳純棉，領口三針加固包邊，多次機洗不變形荷葉邊，自然微落肩修身剪裁。</p>
+          <div class="product-price">NT$ 490</div>
+          <ul class="product-spec">
+            <li>• 規格：男女通用微落肩（M / L）</li>
+            <li>• 顏色：炭黑 / 燕麥白 / 霧灰</li>
+            <li>• 配送：常溫超取 60 元</li>
+          </ul>
+        </div>
+
+        <!-- 商品 2 -->
+        <div class="card">
+          <span class="card-badge">高頻百搭首選</span>
+          <h3>【垂墜感】立體抗皺微寬直筒西裝褲</h3>
+          <p>四季抗皺冰絲混紡，自帶俐落垂墜骨感，立體打褶修飾腿型，鬆緊腰圍兼顧全天候舒適。</p>
+          <div class="product-price">NT$ 690</div>
+          <ul class="product-spec">
+            <li>• 規格：男女無性別直筒剪裁</li>
+            <li>• 特性：抗皺耐磨、免熨燙打理</li>
+            <li>• 配送：常溫超取 60 元</li>
+          </ul>
+        </div>
+
+        <!-- 商品 3 -->
+        <div class="card">
+          <span class="card-badge">生活美學搭配</span>
+          <h3>【日常輕旅】極簡防潑水斜背小包</h3>
+          <p>極簡純黑外觀，高密度防潑水抗撕裂面料，輕量大容量隔層，完美收納隨身耳機與鑰匙。</p>
+          <div class="product-price">NT$ 390</div>
+          <ul class="product-spec">
+            <li>• 規格：約 21 × 15 × 6 cm</li>
+            <li>• 顏色：極簡消光黑</li>
+            <li>• 優惠：與衣褲合購現折 100 元</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 期中 MVP 預購登記 CTA -->
+    <section id="preorder" class="cta-banner">
+      <h2>期中 MVP 限量膠囊套裝預購</h2>
+      <p>「1 件重磅落肩 T + 1 件垂墜直筒西裝褲」經典兩件套組合價 <strong>NT$ 999</strong>（原價 1,180 元）。填寫表單即享免運並加贈出門搭配指南書籤！</p>
+      <button class="btn-primary" onclick="alert('感謝您的支持！此為萬能科技大學《創意發想與實踐》期中報告線上 MVP 原型測試，請於課堂評量中進行交流！')">
+        填寫期中預購意向（Google Form 串接）
+      </button>
+    </section>
+
+  </div>
+
+  <!-- 頁尾 -->
+  <footer>
+    <p>萬能科技大學《創意發想與實踐》期中報告成果展示</p>
+    <p>© 2026 質序衣研 ORDINAL WEAR. Built with Google Antigravity & Hosted on GitHub Pages.</p>
+  </footer>
+
+</body>
+</html>
